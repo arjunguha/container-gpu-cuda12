@@ -2,7 +2,8 @@ FROM docker.io/nvidia/cuda:12.0.0-cudnn8-devel-ubuntu22.04
 RUN apt-get update -q --fix-missing
 ENV TZ=America/New_York
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get install -yq build-essential python3-pip python3.10-venv git tmux vim curl git-lfs
+RUN apt-get install -yq build-essential python3-pip python3.10-venv git tmux vim curl git-lfs nvtop htop
+RUN git config --global credential.helper store # for huggingface login
 WORKDIR /root
 RUN python3 -m venv venv
 RUN echo . /root/venv/bin/activate >> /root/.bashrc
